@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr6hg1m1icqlw"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_4yeec"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rxr6l"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04qk2"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0suc"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_4yeec")
+speed = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_rxr6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_04qk2")
+
+[node name="Item_detector" type="Area2D" parent="." groups=["player"]]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item_detector"]
+shape = SubResource("RectangleShape2D_o0suc")
+
+[connection signal="area_entered" from="Item_detector" to="." method="_on_item_detector_item_entered"]
+[connection signal="body_entered" from="Item_detector" to="." method="_on_item_detector_body_entered"]
+[connection signal="body_exited" from="Item_detector" to="." method="_on_item_detector_body_exited"]

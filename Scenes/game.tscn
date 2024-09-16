@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://brx85kqkde6fk"]
+
+[ext_resource type="PackedScene" uid="uid://dr6hg1m1icqlw" path="res://Scenes/character.tscn" id="1_vf0ba"]
+[ext_resource type="PackedScene" uid="uid://c2hbqoh4pr2jl" path="res://Scenes/door.tscn" id="2_y1n4b"]
+[ext_resource type="PackedScene" uid="uid://bkiamm366uq4s" path="res://Scenes/item.tscn" id="3_yr2ai"]
+[ext_resource type="PackedScene" uid="uid://t42fhqlq45d8" path="res://Scenes/UI.tscn" id="4_wiks7"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Character" parent="." instance=ExtResource("1_vf0ba")]
+
+[node name="Door" parent="." instance=ExtResource("2_y1n4b")]
+position = Vector2(62, -31)
+necesary_item = "Llave Principal"
+door_name = "Puerta Principal"
+
+[node name="Item" parent="." instance=ExtResource("3_yr2ai")]
+position = Vector2(-18, -45)
+item_name = "Llave Principal"
+type = "llave"
+
+[node name="Item2" parent="." instance=ExtResource("3_yr2ai")]
+position = Vector2(-47, -24)
+item_name = "Llave Auto"
+type = "llave"
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="Canvas" instance=ExtResource("4_wiks7")]
